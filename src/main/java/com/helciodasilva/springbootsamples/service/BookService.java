@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.helciodasilva.springbootsamples.dto.BookDTO;
 import com.helciodasilva.springbootsamples.exception.ResourceNotFoundException;
 import com.helciodasilva.springbootsamples.model.BookEntity;
 import com.helciodasilva.springbootsamples.repository.BookRepository;
@@ -22,6 +23,9 @@ public class BookService {
       throw new ResourceNotFoundException(id, "user not found");
     }
     return book.get();
+  }
+
+  public void create(BookDTO bookDTO) {
   }
 
 }
