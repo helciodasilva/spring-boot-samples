@@ -2,8 +2,6 @@ package com.helciodasilva.springbootsamples.service;
 
 import java.util.Optional;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,16 +10,17 @@ import com.helciodasilva.springbootsamples.exception.ResourceNotFoundException;
 import com.helciodasilva.springbootsamples.model.BookEntity;
 import com.helciodasilva.springbootsamples.repository.BookRepository;
 
-@Service
-public class BookService {
+import lombok.extern.slf4j.Slf4j;
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(BookService.class);
+@Service
+@Slf4j
+public class BookService {
 
   @Autowired
   private BookRepository repository;
 
   public BookEntity retrieveById(Long id) {
-    LOGGER.info("Execute retrieve by id={}", id);
+    log.debug("Execute retrieve by id={}", id);
     Optional<BookEntity> book = repository.findById(id);
 
     if (!book.isPresent()) {
@@ -31,7 +30,7 @@ public class BookService {
   }
 
   public void create(BookDTO bookDTO) {
-    LOGGER.info("Execute create bookDTO={}", bookDTO);
+    log.debug("Execute create bookDTO={}", bookDTO);
   }
 
 }
