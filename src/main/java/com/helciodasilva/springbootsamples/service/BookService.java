@@ -29,8 +29,11 @@ public class BookService {
     return book.get();
   }
 
-  public void create(BookDTO bookDTO) {
+  public void create(BookDTO dto) {
     log.debug("Execute create bookDTO={}", bookDTO);
+    BookEntity entity = new BookEntity();
+    entity.setName(dto.getName());
+    repository.save(entity);
   }
 
 }
